@@ -1,0 +1,34 @@
+<template>
+
+  <abt-alert type="info">
+    <div>
+      <abt-button bs-type="danger" click.call="logout()">
+        Logout
+      </abt-button>
+    </div>
+  </abt-alert>
+
+  <div>
+
+    <form>
+      <abt-inputgroup class="mb-3">
+        <input type="text" class="form-control" placeholder="type your message here" value.bind="message" focus.bind="hasFocus">
+        <abt-inputgroup-append>
+          <abt-button type="submit" bs-type="secondary" click.call="addMessage()">
+            Send
+          </abt-button>
+        </abt-inputgroup-append>
+      </abt-inputgroup>
+    </form>
+    <br />
+
+    <ul>
+      <li repeat.for="message of messages">
+        ${message.sender}: &nbsp;&nbsp;&nbsp;&nbsp;${message.message}
+      </li>
+    </ul>
+
+  </div>
+
+
+</template>

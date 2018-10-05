@@ -1,0 +1,30 @@
+<template>
+
+  <abt-modal>
+
+    <abt-modal-header>
+      Login to Chat
+    </abt-modal-header>
+
+    <form>
+
+      <abt-modal-body>
+
+        <input type="text" class="form-control" value.bind="username" />
+
+      </abt-modal-body>
+
+      <abt-modal-footer>
+        <abt-button type="submit" bs-type="primary" click.call="okHandler()">
+          Login
+        </abt-button>
+        <abt-button type="reset" bs-type="secondary" click.call="cancelHandler()">
+          Cancel
+        </abt-button>
+      </abt-modal-footer>
+    </form>
+
+
+  </abt-modal>
+
+</template>
