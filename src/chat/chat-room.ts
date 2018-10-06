@@ -18,10 +18,10 @@ export class ChatRoom {
   constructor(private authService: AuthService, private router: Router, private chatService: ChatHubService, private ea: EventAggregator) { }
 
   private canActivate() {
-    if (!this.authService.isLoggedIn) {
-      this.unAuthorized();
-      return;
-    }
+    // if (!this.authService.isLoggedIn) {
+    //   this.unAuthorized();
+    //   return;
+    // }
 
     this.chatService.start().then(_ => {
       this.ea.subscribe("Message-Received", (data) => {
