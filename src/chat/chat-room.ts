@@ -16,13 +16,17 @@ export class ChatRoom {
   constructor(private authService: AuthService, private router: Router, private chatService: ChatHubService, private ea: EventAggregator) { }
 
   private canActivate() {
-    this.chatService.start().then(_ => {
-      this.ea.subscribe("Message-Received", (data) => {
-        this.messages.push(data);
-
+    // if the start fails we won't land in this page
+    return new Promise((resolve, reject) => {
+      this.chatService.start().then(_ => {
+        this.ea.subscribe("Message-Received", (data) => {
+          this.messages.push(data);
+        });
+        resolve(true);
+      }).catch(_ => {
+        resolve(false);
       });
     });
-
   }
 
   private logout() {
