@@ -1,15 +1,14 @@
-# aut-webpack4-aspnetcore-starter-kit
+# Chat Application
 
-A starter kit for aurelia-toolbelt using webpack and ASP.NET Core
+A simple chat application using [Aurelia](htpps://aurelia.io) in conjunction with [SignalR Core](https://docs.microsoft.com/en-us/aspnet/core/signalr/introduction?view=aspnetcore-2.1).
 
 
 # How to run the project
 
 1. ```yarn install``` or ```npm install```
 2. ```dotnet restore```
-3. ```au build```
-4. ```dotnet run```
+3. ```dotnet run```
 
-* On my system when I ran ```au run``` the bundling process works, but when hitting the URL in browser I get a message that it waits for bundling and after a while getting the error that you've run ```webpack``` twice. 
-Would be great if anyone have the time to look at it.
+<hr />
 
+### You can find the article describing the steps [here](http://shahabganji.me/2018/10/08/chat-application-using-aurelia-and-signalr/).
