@@ -6,10 +6,6 @@ export class LoginModal {
 
   private username: string = null;
 
-
-  /**
-   *
-   */
   constructor(private dc: DialogController) {
   }
 

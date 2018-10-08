@@ -2,17 +2,15 @@
 import "toastr/build/toastr.css";
 import "font-awesome/css/font-awesome.css";
 
+import { PLATFORM } from "aurelia-pal";
+import { RouterConfiguration, Router, Redirect } from 'aurelia-router';
+import { autoinject } from 'aurelia-dependency-injection';
 
 import { ToastrService } from 'aurelia-toolbelt';
-import { inject, autoinject } from 'aurelia-dependency-injection';
-
-import { RouterConfiguration, Router, Redirect } from 'aurelia-router';
-import { PLATFORM } from "aurelia-pal";
 
 import { AuthService } from './services/auth-service';
 
-
-@inject(ToastrService)
+@autoinject()
 export class App {
 
   private router: Router;

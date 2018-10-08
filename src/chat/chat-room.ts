@@ -1,14 +1,12 @@
+import { Router } from "aurelia-router";
 import { autoinject } from "aurelia-framework";
 import { AuthService } from "services/auth-service";
-import { Router } from "aurelia-router";
-import { resolve } from "path";
-import { ChatHubService } from "services/hubs/chat-hub-service";
 import { EventAggregator } from "aurelia-event-aggregator";
 
+import { ChatHubService } from "services/hubs/chat-hub-service";
 
 @autoinject()
 export class ChatRoom {
-
 
   private message: string = null;
   private messages = [];
@@ -18,11 +16,6 @@ export class ChatRoom {
   constructor(private authService: AuthService, private router: Router, private chatService: ChatHubService, private ea: EventAggregator) { }
 
   private canActivate() {
-    // if (!this.authService.isLoggedIn) {
-    //   this.unAuthorized();
-    //   return;
-    // }
-
     this.chatService.start().then(_ => {
       this.ea.subscribe("Message-Received", (data) => {
         this.messages.push(data);
@@ -32,14 +25,10 @@ export class ChatRoom {
 
   }
 
-  private unAuthorized(): any {
-    this.router.navigateToRoute("login");
-  }
-
   private logout() {
 
     this.authService.logout().then(response => {
-      this.unAuthorized();
+      this.router.navigateToRoute("login");
     });
   }
 

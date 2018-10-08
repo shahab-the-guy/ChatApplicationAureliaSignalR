@@ -1,11 +1,12 @@
-import { singleton, autoinject, inject, transient } from "aurelia-framework";
-import { HubConnectionBuilder, LogLevel, HubConnection } from '@aspnet/signalr';
-import { AuthService } from "../auth-service";
+import { singleton, autoinject } from "aurelia-framework";
 import { EventAggregator } from "aurelia-event-aggregator";
 
+import { HubConnectionBuilder, LogLevel, HubConnection } from '@aspnet/signalr';
 
-@transient()
-@inject(AuthService, EventAggregator)
+import { AuthService } from "../auth-service";
+
+@singleton()
+@autoinject()
 export class ChatHubService {
 
 
@@ -14,7 +15,7 @@ export class ChatHubService {
   constructor(private authService: AuthService, private ea: EventAggregator) {
     this.connection = new HubConnectionBuilder()
       .withUrl('/chat')
-      // .configureLogging(LogLevel.Information)
+      .configureLogging(LogLevel.Information)
       .build();
 
     this.connection.on("updateMessages", (data) => this.notifier(data));

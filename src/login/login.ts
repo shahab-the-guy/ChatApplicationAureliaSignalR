@@ -7,16 +7,14 @@ import { Router, RouterConfiguration } from "aurelia-router";
 @autoinject()
 export class Login {
 
-
-  constructor(private ds: DialogService, private authService: AuthService, private router: Router) {
-  }
+  constructor(private ds: DialogService, private authService: AuthService, private router: Router) { }
 
   canActivate() {
     if (this.authService.isLoggedIn) {
       this.navigateToChatRoom();
     }
   }
-  
+
   navigateToChatRoom(): any {
     this.router.navigateToRoute("chat-room");
   }
